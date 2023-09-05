@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class RadioTest {
     @Test
     public void customizingTheCurrentStation() {                 //Пользовательская настройка текущей станции.
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(5);
         int expected = 5;
         int actual = radio.getCurrentStation();
@@ -15,7 +15,7 @@ public class RadioTest {
 
     @Test
     public void nextRadioStation() {                       //Переход на следующую радиостанцию.
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(7);
         radio.next();
         int expected = 8;
@@ -25,7 +25,7 @@ public class RadioTest {
 
     @Test
     public void previousRadioStation() {                        //Переход на предыдущую радиостанцию.
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(7);
         radio.prev();
         int expected = 6;
@@ -35,7 +35,7 @@ public class RadioTest {
 
     @Test
     public void jumpForwardTo0After9() {          //Переход вперед к 0 после 9.
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(9);
         radio.next();
         int expected = 0;
@@ -46,7 +46,7 @@ public class RadioTest {
 
     @Test
     public void GoBackTo9After0() {                //Вернуться к 9 после 0.
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(0);
         radio.prev();
         int expected = 9;
@@ -57,7 +57,7 @@ public class RadioTest {
 
     @Test
     public void stationShouldNotBeMoreThan10() {            //Радиостанци не должна быть больше чем 10.
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(11);
         radio.next();
         int expected = 1;
@@ -67,7 +67,7 @@ public class RadioTest {
 
     @Test
     public void stationMustNotBeBelow0() {               //Радиостанций не должна быть ниже 0.
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setCurrentStation(-1);
         radio.prev();
         int expected = 9;
